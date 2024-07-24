@@ -22,8 +22,8 @@ var react_dom = __webpack_require__(3935);
 var es = __webpack_require__(6936);
 // EXTERNAL MODULE: ./node_modules/react-hot-loader/dist/react-hot-loader.production.min.js
 var react_hot_loader_production_min = __webpack_require__(7209);
-// EXTERNAL MODULE: ./node_modules/redux/es/redux.js + 5 modules
-var redux = __webpack_require__(4791);
+// EXTERNAL MODULE: ./node_modules/redux/es/redux.js
+var redux = __webpack_require__(4890);
 // EXTERNAL MODULE: ./node_modules/redux-saga/dist/redux-saga-core-npm-proxy.esm.js + 2 modules
 var redux_saga_core_npm_proxy_esm = __webpack_require__(797);
 ;// CONCATENATED MODULE: ./src/store/actions.js
@@ -702,8 +702,8 @@ function watchFetchTargets() {
 /* harmony default export */ const sagas = ([watchCustomTargets, watchFetchTargets]);
 // EXTERNAL MODULE: ./node_modules/antd/es/modal/style/index.js + 1 modules
 var modal_style = __webpack_require__(2325);
-// EXTERNAL MODULE: ./node_modules/antd/es/modal/index.js + 20 modules
-var modal = __webpack_require__(57);
+// EXTERNAL MODULE: ./node_modules/antd/es/modal/index.js + 16 modules
+var modal = __webpack_require__(4416);
 // EXTERNAL MODULE: ./node_modules/antd/es/button/style/index.js + 1 modules
 var button_style = __webpack_require__(729);
 // EXTERNAL MODULE: ./node_modules/antd/es/button/index.js + 3 modules
@@ -2245,6 +2245,10 @@ function destroyStore() {
 var form_style = __webpack_require__(5503);
 // EXTERNAL MODULE: ./node_modules/antd/es/form/index.js + 19 modules
 var es_form = __webpack_require__(9491);
+// EXTERNAL MODULE: ./node_modules/antd/es/tooltip/style/index.js + 1 modules
+var tooltip_style = __webpack_require__(2005);
+// EXTERNAL MODULE: ./node_modules/antd/es/tooltip/index.js + 18 modules
+var tooltip = __webpack_require__(7614);
 // EXTERNAL MODULE: ./node_modules/antd/es/input/style/index.js + 1 modules
 var input_style = __webpack_require__(2758);
 // EXTERNAL MODULE: ./node_modules/antd/es/input/index.js + 8 modules
@@ -2342,8 +2346,16 @@ function split(path) {
     return item.length;
   });
 }
+// EXTERNAL MODULE: ./node_modules/bootstrap/dist/css/bootstrap.min.css
+var bootstrap_min = __webpack_require__(4039);
+// EXTERNAL MODULE: ./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js
+var bootstrap_bundle_min = __webpack_require__(8702);
+// EXTERNAL MODULE: ./node_modules/@ant-design/icons/es/icons/InfoCircleTwoTone.js + 22 modules
+var InfoCircleTwoTone = __webpack_require__(4598);
 ;// CONCATENATED MODULE: ./src/modules/custom/containers/custom.jsx
 function custom_typeof(o) { "@babel/helpers - typeof"; return custom_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, custom_typeof(o); }
+
+
 
 
 
@@ -2365,6 +2377,10 @@ function custom_inherits(t, e) { if ("function" != typeof e && null !== e) throw
 function custom_setPrototypeOf(t, e) { return custom_setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, custom_setPrototypeOf(t, e); }
 
 
+// filename app.js
+
+
+
 
 
 
@@ -2384,32 +2400,73 @@ var Custom = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var _this2 = this;
-      return /*#__PURE__*/react.createElement(es_form/* default */.Z, null, /*#__PURE__*/react.createElement("h1", null, "Custom Targets"), /*#__PURE__*/react.createElement(es_form/* default.Item */.Z.Item, {
+      return /*#__PURE__*/react.createElement(es_form/* default */.Z, {
+        onSubmit: function onSubmit(e) {
+          e.preventDefault();
+          _this2.sendtargets(_this2.state.targets);
+          window.location.reload();
+        }
+      }, /*#__PURE__*/react.createElement("h1", {
+        className: "display-4"
+      }, "Custom Targets"), /*#__PURE__*/react.createElement("div", {
+        className: "alert alert-warning",
+        role: "alert"
+      }, /*#__PURE__*/react.createElement("p", {
+        className: "mb-0",
+        style: {
+          fontSize: '18px'
+        }
+      }, "Warning! : The order of Execution of the targets will be same as the order of the targets specified.")), /*#__PURE__*/react.createElement(es_form/* default.Item */.Z.Item, {
         label: "Targets",
         labelCol: {
-          span: 4
+          span: 4,
+          offset: 0
         },
         wrapperCol: {
-          span: 20
+          span: 4,
+          offset: 0
+        },
+        style: {
+          display: 'flex'
+        }
+      }, /*#__PURE__*/react.createElement("div", {
+        style: {
+          display: 'flex',
+          alignItems: 'center'
         }
       }, /*#__PURE__*/react.createElement(input/* default */.Z, {
+        size: "small",
+        style: {
+          height: '30px',
+          fontSize: '16px',
+          flexGrow: 1
+        },
         value: this.state.targets,
         onChange: function onChange(event) {
           return _this2.setState({
             targets: event.target.value
           });
         }
-      })), /*#__PURE__*/react.createElement(es_form/* default.Item */.Z.Item, {
+      }), /*#__PURE__*/react.createElement(tooltip/* default */.Z, {
+        title: "Note: Multiple targets should be separated by Comma."
+      }, /*#__PURE__*/react.createElement(InfoCircleTwoTone/* default */.Z, {
+        style: {
+          marginLeft: '8px',
+          fontSize: '16px'
+        }
+      })))), /*#__PURE__*/react.createElement(es_form/* default.Item */.Z.Item, {
         wrapperCol: {
-          span: 20,
-          offset: 4
+          span: 3,
+          offset: 4,
+          style: {
+            height: '60px'
+          }
         }
       }, /*#__PURE__*/react.createElement(input/* default */.Z, {
+        size: "small",
         type: "submit",
         value: "Submit",
-        onClick: function onClick() {
-          return _this2.sendtargets(_this2.state.targets);
-        }
+        className: "btn btn-primary btn-sm mw-100 h-100"
       })));
     }
   }, {
@@ -2455,6 +2512,158 @@ renderApp();
 
 // Hot Module Replacement API
 if (module && module.hot) {}
+
+/***/ }),
+
+/***/ 2204:
+/***/ ((module) => {
+
+"use strict";
+module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%27-4 -4 8 8%27%3e%3ccircle r=%272%27 fill=%27%23fff%27/%3e%3c/svg%3e";
+
+/***/ }),
+
+/***/ 9609:
+/***/ ((module) => {
+
+"use strict";
+module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%27-4 -4 8 8%27%3e%3ccircle r=%273%27 fill=%27%2386b7fe%27/%3e%3c/svg%3e";
+
+/***/ }),
+
+/***/ 2469:
+/***/ ((module) => {
+
+"use strict";
+module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%27-4 -4 8 8%27%3e%3ccircle r=%273%27 fill=%27%23fff%27/%3e%3c/svg%3e";
+
+/***/ }),
+
+/***/ 7486:
+/***/ ((module) => {
+
+"use strict";
+module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%27-4 -4 8 8%27%3e%3ccircle r=%273%27 fill=%27rgba%280, 0, 0, 0.25%29%27/%3e%3c/svg%3e";
+
+/***/ }),
+
+/***/ 991:
+/***/ ((module) => {
+
+"use strict";
+module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%27-4 -4 8 8%27%3e%3ccircle r=%273%27 fill=%27rgba%28255, 255, 255, 0.25%29%27/%3e%3c/svg%3e";
+
+/***/ }),
+
+/***/ 4144:
+/***/ ((module) => {
+
+"use strict";
+module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 12 12%27 width=%2712%27 height=%2712%27 fill=%27none%27 stroke=%27%23dc3545%27%3e%3ccircle cx=%276%27 cy=%276%27 r=%274.5%27/%3e%3cpath stroke-linejoin=%27round%27 d=%27M5.8 3.6h.4L6 6.5z%27/%3e%3ccircle cx=%276%27 cy=%278.2%27 r=%27.6%27 fill=%27%23dc3545%27 stroke=%27none%27/%3e%3c/svg%3e";
+
+/***/ }),
+
+/***/ 6254:
+/***/ ((module) => {
+
+"use strict";
+module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27%23000%27%3e%3cpath d=%27M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z%27/%3e%3c/svg%3e";
+
+/***/ }),
+
+/***/ 1281:
+/***/ ((module) => {
+
+"use strict";
+module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27%236ea8fe%27%3e%3cpath fill-rule=%27evenodd%27 d=%27M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z%27/%3e%3c/svg%3e";
+
+/***/ }),
+
+/***/ 5647:
+/***/ ((module) => {
+
+"use strict";
+module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27%23fff%27%3e%3cpath d=%27M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z%27/%3e%3c/svg%3e";
+
+/***/ }),
+
+/***/ 1692:
+/***/ ((module) => {
+
+"use strict";
+module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27%23fff%27%3e%3cpath d=%27M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z%27/%3e%3c/svg%3e";
+
+/***/ }),
+
+/***/ 819:
+/***/ ((module) => {
+
+"use strict";
+module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27none%27 stroke=%27%23052c65%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpath d=%27M2 5L8 11L14 5%27/%3e%3c/svg%3e";
+
+/***/ }),
+
+/***/ 6588:
+/***/ ((module) => {
+
+"use strict";
+module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27none%27 stroke=%27%23212529%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpath d=%27M2 5L8 11L14 5%27/%3e%3c/svg%3e";
+
+/***/ }),
+
+/***/ 6770:
+/***/ ((module) => {
+
+"use strict";
+module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3e%3cpath fill=%27none%27 stroke=%27%23343a40%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%272%27 d=%27m2 5 6 6 6-6%27/%3e%3c/svg%3e";
+
+/***/ }),
+
+/***/ 6711:
+/***/ ((module) => {
+
+"use strict";
+module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3e%3cpath fill=%27none%27 stroke=%27%23dee2e6%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%272%27 d=%27m2 5 6 6 6-6%27/%3e%3c/svg%3e";
+
+/***/ }),
+
+/***/ 8931:
+/***/ ((module) => {
+
+"use strict";
+module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 20 20%27%3e%3cpath fill=%27none%27 stroke=%27%23fff%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%273%27 d=%27M6 10h8%27/%3e%3c/svg%3e";
+
+/***/ }),
+
+/***/ 6199:
+/***/ ((module) => {
+
+"use strict";
+module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 20 20%27%3e%3cpath fill=%27none%27 stroke=%27%23fff%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%273%27 d=%27m6 10 3 3 6-6%27/%3e%3c/svg%3e";
+
+/***/ }),
+
+/***/ 2956:
+/***/ ((module) => {
+
+"use strict";
+module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 30 30%27%3e%3cpath stroke=%27rgba%28255, 255, 255, 0.55%29%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3e%3c/svg%3e";
+
+/***/ }),
+
+/***/ 2221:
+/***/ ((module) => {
+
+"use strict";
+module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 30 30%27%3e%3cpath stroke=%27rgba%2833, 37, 41, 0.75%29%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3e%3c/svg%3e";
+
+/***/ }),
+
+/***/ 5122:
+/***/ ((module) => {
+
+"use strict";
+module.exports = "data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 8 8%27%3e%3cpath fill=%27%23198754%27 d=%27M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z%27/%3e%3c/svg%3e";
 
 /***/ }),
 
@@ -2599,7 +2808,7 @@ if (module && module.hot) {}
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
 /******/ 	(() => {
-/******/ 		// no baseURI
+/******/ 		__webpack_require__.b = document.baseURI || self.location.href;
 /******/ 		
 /******/ 		// object to store loaded and loading chunks
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
